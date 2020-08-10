@@ -21,12 +21,12 @@ STATIC_DIR=os.path.join(BASE_DIR,'static')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yf5w6y3_zidyq2y8_26%5@b#oszvpy%5)ryg3d2a)20u(2q3@%'
+SECRET_KEY = os.environ.get('yf5w6y3_zidyq2y8_26%5@b#oszvpy%5)ryg3d2a)20u(2q3@%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://techforms.herokuapp.com/"]
 
 
 # Application definition
@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'djangoformvalidation.urls'
@@ -81,7 +83,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -121,3 +125,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[STATIC_DIR,]
+
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = '/static/'
+
+# Static file serving.
+# http://whitenoise.evans.io/en/stable/django.html#django-middleware
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
