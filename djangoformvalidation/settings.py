@@ -25,7 +25,7 @@ SECRET_KEY = '@e-*x^@v6=xc@uf44$)6dzuvb+m26j9463bj4wjr@tc@32&i1*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://techforms.herokuapp.com/"]
+ALLOWED_HOSTS = ["techforms.herokuapp.com","https://techforms.herokuapp.com/","127.0.0.1:8000",]
 
 
 # Application definition
