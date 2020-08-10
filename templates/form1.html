@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="us-en">
+<head>
+	<meta charset="UTF-8">
+	<title>sample form</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/formcss.css' %}">
+</head>
+
+<body>
+	<div class="container" align="center">
+<h1>Hey! Thsnks for submitting form</h1>
+<h1>Good bye...!</h1>
+  <a href="{% url 'home' %}"><input type="submit" name="back" value="back" class="btn btn-danger"></a>
+</div>
+</body>
+</html>
