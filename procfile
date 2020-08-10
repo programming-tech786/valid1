@@ -1,1 +1,1 @@
-web: gunicorn djangoformvalidation.wsgi --log-file -
+web: gunicorn valid1.wsgi --log-file -
