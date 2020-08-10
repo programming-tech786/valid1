@@ -1,1 +1,0 @@
-web: gunicorn valid1.wsgi --log-file -
